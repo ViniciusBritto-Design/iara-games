@@ -79,4 +79,4 @@ iara-games/
 
 ## 8. Link do repositório
 
-https://github.com/seu-usuario/iara-games
+https://github.com/ViniciusBritto-Design/iara-games.git

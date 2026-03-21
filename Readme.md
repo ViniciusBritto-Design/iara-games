@@ -1,5 +1,7 @@
 # Iara Games
 
+![Preview do projeto](screenshot.png)
+
 ## 1. Contexto do projeto
 
 A Iara Games é um projeto acadêmico desenvolvido para a Sprint 01 da disciplina de Web Design. Nesta etapa inicial, o objetivo é construir a visão conceitual e visual da plataforma, além de desenvolver uma página inicial estática em HTML e CSS e organizar o projeto em um repositório público no GitHub.

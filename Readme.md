@@ -1,5 +1,7 @@
 # Iara Games
 
+## Preview
+
 ![Preview do projeto](screenshot.png)
 
 ## 1. Contexto do projeto

@@ -186,7 +186,7 @@ O formulário foi organizado em grid para facilitar leitura e preenchimento.
 
 ---
 
-## 10. Considerações de UX
+## 9. Considerações de UX
 
 Durante o desenvolvimento foram priorizados:
 
@@ -203,13 +203,13 @@ O que posso fazer aqui?
 
 ---
 
-## 11. ESG
+## 10. ESG
 
 O projeto considera aspectos de inclusão digital ao propor uma interface acessível, com navegação simples e conteúdo organizado.
 
 Além disso, valoriza o cenário de desenvolvedores independentes brasileiros, incentivando diversidade criativa e democratização da publicação de jogos.
 
-## 12. Repositório
+## 11. Repositório
 
 https://github.com/ViniciusBritto-Design/iara-games
 

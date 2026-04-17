@@ -1,5 +1,9 @@
 # Iara Games
 
+## Preview
+
+![Preview do projeto](screenshot1.png)
+
 ## 1. Objetivo da Sprint 02
 
 O objetivo desta etapa foi evoluir a Iara Games a partir de uma abordagem centrada no usuário, contemplando:

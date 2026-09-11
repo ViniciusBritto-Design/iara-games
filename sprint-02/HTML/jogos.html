@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iara Games | Catálogo</title>
+  <meta
+    name="description"
+    content="Explore o catálogo da Iara Games e descubra jogos independentes brasileiros em diferentes categorias."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <a href="index.html" class="logo">
+        <img src="../Assets/Logo_IG.svg" alt="Iara Games Logo">
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <button
+          type="button"
+          id="navToggle"
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="mainNavList"
+          aria-label="Abrir menu de navegação"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-list" id="mainNavList">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="jogos.html" class="active">Catálogo</a></li>
+          <li><a href="publicar.html">Publicar meu jogo</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-content">
+          <span class="section-label">Catálogo da plataforma</span>
+          <h1>Encontre seu próximo jogo indie</h1>
+          <p>
+            Explore títulos autorais, descubra novas experiências e navegue por
+            jogos criados por desenvolvedores independentes brasileiros.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories-section">
+      <div class="container catalog-toolbar">
+        <label class="search-bar" for="catalogSearch">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+          </svg>
+          <input
+            type="search"
+            id="catalogSearch"
+            class="search-input"
+            placeholder="Buscar jogo pelo nome..."
+            autocomplete="off"
+          >
+        </label>
+
+        <div class="category-list" role="group" aria-label="Filtrar jogos por categoria">
+          <button type="button" class="category-chip active" data-filter="todos">Todos</button>
+          <button type="button" class="category-chip" data-filter="aventura">Aventura</button>
+          <button type="button" class="category-chip" data-filter="acao">Ação</button>
+          <button type="button" class="category-chip" data-filter="rpg">RPG</button>
+          <button type="button" class="category-chip" data-filter="puzzle">Puzzle</button>
+          <button type="button" class="category-chip" data-filter="narrativo">Narrativo</button>
+          <button type="button" class="category-chip" data-filter="simulacao">Simulação</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog-section">
+      <div class="container">
+        <div class="section-heading catalog-heading">
+          <h2>Jogos disponíveis</h2>
+          <p>
+            Navegue por diferentes gêneros e descubra projetos com propostas,
+            atmosferas e estilos visuais diversos.
+          </p>
+        </div>
+
+        <div class="catalog-grid">
+          <article
+            class="catalog-card"
+            data-category="aventura"
+            data-thumb="thumb-1"
+            data-pill="Aventura"
+            data-title="Lendas do Rio"
+            data-desc="Explore paisagens misteriosas e avance por uma jornada marcada por descoberta e narrativa. Um título autoral que valoriza a exploração livre e a atmosfera sonora inspirada no folclore brasileiro."
+          >
+            <div class="catalog-thumb">
+              <img src="../Assets/Lendas do Rio.jpg" alt="Lendas do Rio">
+            </div>
+            <div class="catalog-body">
+              <span class="pill">Aventura</span>
+              <h3>Lendas do Rio</h3>
+              <p>
+                Explore paisagens misteriosas e avance por uma jornada marcada por descoberta e narrativa.
+              </p>
+              <button type="button" class="card-link" data-modal-trigger>Ver detalhes</button>
+            </div>
+          </article>
+
+          <article
+            class="catalog-card"
+            data-category="puzzle"
+            data-thumb="thumb-2"
+            data-pill="Puzzle"
+            data-title="Mata Viva"
+            data-desc="Resolva desafios em ambientes naturais e descubra caminhos em uma experiência estratégica. Cada fase propõe um quebra-cabeça inspirado em ecossistemas reais da fauna e flora nacionais."
+          >
+            <div class="catalog-thumb">
+              <img src="../Assets/Mata Viva.jpg" alt="Mata Viva">
+            </div>
+            <div class="catalog-body">
+              <span class="pill">Puzzle</span>
+              <h3>Mata Viva</h3>
+              <p>
+                Resolva desafios em ambientes naturais e descubra caminhos em uma experiência estratégica.
+              </p>
+              <button type="button" class="card-link" data-modal-trigger>Ver detalhes</button>
+            </div>
+          </article>
+
+          <article
+            class="catalog-card"
+            data-category="rpg"
+            data-thumb="thumb-3"
+            data-pill="RPG"
+            data-title="Origens do Norte"
+            data-desc="Evolua habilidades, enfrente perigos e acompanhe uma jornada fantástica em mundo imersivo. O sistema de progressão é construído em torno de escolhas que moldam o destino do protagonista."
+          >
+            <div class="catalog-thumb">
+              <img src="../Assets/Origens do Norte.jpg" alt="Origens do Norte">
+            </div>
+            <div class="catalog-body">
+              <span class="pill">RPG</span>
+              <h3>Origens do Norte</h3>
+              <p>
+                Evolua habilidades, enfrente perigos e acompanhe uma jornada fantástica em mundo imersivo.
+              </p>
+              <button type="button" class="card-link" data-modal-trigger>Ver detalhes</button>
+            </div>
+          </article>
+
+          <article
+            class="catalog-card"
+            data-category="acao"
+            data-thumb="thumb-4"
+            data-pill="Ação"
+            data-title="Selva Neon"
+            data-desc="Combate intenso, ritmo veloz e cenários vibrantes em uma aventura de estética futurista. As fases combinam movimentação ágil com um visual neon que remete à selva urbana."
+          >
+            <div class="catalog-thumb">
+              <img src="../Assets/Selva Neon.jpg" alt="Selva Neon">
+            </div>
+            <div class="catalog-body">
+              <span class="pill">Ação</span>
+              <h3>Selva Neon</h3>
+              <p>
+                Combate intenso, ritmo veloz e cenários vibrantes em uma aventura de estética futurista.
+              </p>
+              <button type="button" class="card-link" data-modal-trigger>Ver detalhes</button>
+            </div>
+          </article>
+
+          <article
+            class="catalog-card"
+            data-category="simulacao"
+            data-thumb="thumb-5"
+            data-pill="Simulação"
+            data-title="Estúdio Brasil"
+            data-desc="Construa sua equipe, organize lançamentos e faça seu estúdio crescer dentro do cenário indie. Gerencie equipe, orçamento e prazos enquanto constrói sua reputação no mercado."
+          >
+            <div class="catalog-thumb">
+              <img src="../Assets/Estúdio Brasil.jpg" alt="Estúdio Brasil">
+            </div>
+            <div class="catalog-body">
+              <span class="pill">Simulação</span>
+              <h3>Estúdio Brasil</h3>
+              <p>
+                Construa sua equipe, organize lançamentos e faça seu estúdio crescer dentro do cenário indie.
+              </p>
+              <button type="button" class="card-link" data-modal-trigger>Ver detalhes</button>
+            </div>
+          </article>
+
+          <article
+            class="catalog-card"
+            data-category="narrativo"
+            data-thumb="thumb-6"
+            data-pill="Narrativo"
+            data-title="Entre Águas"
+            data-desc="Acompanhe uma história guiada por escolhas, encontros e consequências ao longo da jornada. O ritmo contemplativo é conduzido por diálogos ramificados e paisagens ribeirinhas."
+          >
+            <div class="catalog-thumb">
+              <img src="../Assets/Entre Águas.jpg" alt="Entre Águas">
+            </div>
+            <div class="catalog-body">
+              <span class="pill">Narrativo</span>
+              <h3>Entre Águas</h3>
+              <p>
+                Acompanhe uma história guiada por escolhas, encontros e consequências ao longo da jornada.
+              </p>
+              <button type="button" class="card-link" data-modal-trigger>Ver detalhes</button>
+            </div>
+          </article>
+
+          <article
+            class="catalog-card"
+            data-category="puzzle"
+            data-thumb="thumb-2"
+            data-pill="Puzzle"
+            data-title="Raízes da Serra"
+            data-desc="Percorra cenários cheios de desafios visuais e descubra segredos escondidos pelo caminho. A trilha sonora acústica reforça a atmosfera contemplativa das montanhas."
+          >
+            <div class="catalog-thumb">
+              <img src="../Assets/Raízes da Serra.jpg" alt="Raízes da Serra">
+            </div>
+            <div class="catalog-body">
+              <span class="pill">Puzzle</span>
+              <h3>Raízes da Serra</h3>
+              <p>
+                Percorra cenários cheios de desafios visuais e descubra segredos escondidos pelo caminho.
+              </p>
+              <button type="button" class="card-link" data-modal-trigger>Ver detalhes</button>
+            </div>
+          </article>
+
+          <article
+            class="catalog-card"
+            data-category="acao"
+            data-thumb="thumb-4"
+            data-pill="Ação"
+            data-title="Horizonte Verde"
+            data-desc="Missões dinâmicas, exploração ampla e progressão constante em um universo cheio de energia. O mapa aberto incentiva a descoberta de rotas alternativas entre os objetivos."
+          >
+            <div class="catalog-thumb">
+              <img src="../Assets/Horizonte Verde.jpg" alt="Horizonte Verde">
+            </div>
+            <div class="catalog-body">
+              <span class="pill">Ação</span>
+              <h3>Horizonte Verde</h3>
+              <p>
+                Missões dinâmicas, exploração ampla e progressão constante em um universo cheio de energia.
+              </p>
+              <button type="button" class="card-link" data-modal-trigger>Ver detalhes</button>
+            </div>
+          </article>
+
+          <p class="catalog-empty" id="catalogEmpty">
+            Nenhum jogo encontrado para essa categoria. Experimente selecionar outro filtro.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-main">
+      <div class="footer-branding">
+        <a href="index.html" class="logo">
+          <img src="../Assets/LogoFooter_IG.svg" alt="Iara Games Logo">
+        </a>
+        <p>
+          Descubra jogos independentes, acompanhe novos projetos e conecte-se
+          com o cenário criativo brasileiro.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Plataforma</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="jogos.html">Catálogo</a></li>
+          <li><a href="publicar.html">Publicar meu jogo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Navegação</h4>
+        <ul class="footer-links">
+          <li><a href="jogos.html">Jogos em destaque</a></li>
+          <li><a href="publicar.html">Área de desenvolvedores</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="gameModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal-close" aria-label="Fechar detalhes">&times;</button>
+      <div class="modal-thumb"></div>
+      <span class="pill modal-pill">Categoria</span>
+      <h3 class="modal-title" id="modalTitle">Título do jogo</h3>
+      <p class="modal-desc">Descrição do jogo.</p>
+    </div>
+  </div>
+
+  <script src="../JS/script.js" defer></script>
+</body>
+</html>

@@ -1,6 +1,9 @@
-# Publica a área React (sprint-03) no GitHub Pages
-# sempre que houver push na branch main.
-name: Deploy do Catálogo React
+# Publica a Sprint 03 da Iara Games no GitHub Pages a cada push na main.
+# O site final é montado assim:
+#   /                -> redireciona para a página inicial
+#   /HTML, /CSS ...  -> páginas da plataforma (HTML, CSS e JS da Sprint 02)
+#   /catalogo/       -> área de Catálogo desenvolvida em React (pasta React)
+name: Deploy da Sprint 03
 
 on:
   push:
@@ -22,9 +25,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: sprint-03
     steps:
       - uses: actions/checkout@v4
 
@@ -32,17 +32,25 @@ jobs:
         with:
           node-version: 22
 
-      - name: Instalar dependências
+      - name: Instalar dependências do Catálogo React
+        working-directory: sprint-03/React
         run: npm install
 
-      - name: Gerar build de produção
+      - name: Gerar build do Catálogo React
+        working-directory: sprint-03/React
         run: npm run build
+
+      - name: Montar o site completo
+        run: |
+          mkdir -p _site/catalogo
+          cp -r sprint-03/index.html sprint-03/Assets sprint-03/CSS sprint-03/HTML sprint-03/JS _site/
+          cp -r sprint-03/React/dist/. _site/catalogo/
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: sprint-03/dist
+          path: _site
 
   deploy:
     needs: build

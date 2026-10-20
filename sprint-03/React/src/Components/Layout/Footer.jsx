@@ -1,6 +1,7 @@
 import Link from "../../Router/Link";
 import { CATEGORIES } from "../../Data/categories";
 import logoFooter from "../../Assets/LogoFooter_IG.svg";
+import { PLATFORM_PAGES } from "../../Data/site";
 
 export default function Footer() {
   const categories = CATEGORIES.filter((category) => category.id !== "todos").slice(0, 4);
@@ -9,9 +10,9 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-main">
         <div className="footer-branding">
-          <Link to="/" className="logo">
+          <a href={PLATFORM_PAGES.home} className="logo">
             <img src={logoFooter} alt="Iara Games" />
-          </Link>
+          </a>
           <p>
             Descubra jogos independentes, acompanhe novos projetos e conecte-se com o cenário
             criativo brasileiro.
@@ -21,7 +22,9 @@ export default function Footer() {
         <div className="footer-column">
           <h4>Plataforma</h4>
           <ul className="footer-links">
+            <li><a href={PLATFORM_PAGES.home}>Início</a></li>
             <li><Link to="/">Catálogo</Link></li>
+            <li><a href={PLATFORM_PAGES.publish}>Publicar meu jogo</a></li>
             <li><Link to="/favoritos">Minha lista</Link></li>
           </ul>
         </div>

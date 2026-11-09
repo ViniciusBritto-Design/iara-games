@@ -1,15 +1,16 @@
-# Publica a Sprint 03 da Iara Games no GitHub Pages a cada push na main.
+# Publica a Sprint 04 da Iara Games no GitHub Pages a cada push na main.
 # O site final é montado assim:
 #   /                -> redireciona para a página inicial
 #   /HTML, /CSS ...  -> páginas da plataforma (HTML, CSS e JS da Sprint 02)
-#   /catalogo/       -> área de Catálogo desenvolvida em React (pasta React)
-name: Deploy da Sprint 03
+#   /catalogo/       -> área de Catálogo em React (Fase 06)
+#   /estudios/       -> área de Estúdios em React com a API ViaCEP (Fase 07)
+name: Deploy da Sprint 04
 
 on:
   push:
     branches: [main]
     paths:
-      - "sprint-03/**"
+      - "sprint-04/**"
       - ".github/workflows/deploy-react.yml"
   workflow_dispatch:
 
@@ -32,19 +33,20 @@ jobs:
         with:
           node-version: 22
 
-      - name: Instalar dependências do Catálogo React
-        working-directory: sprint-03/React
+      - name: Instalar dependências das áreas React
+        working-directory: sprint-04/React
         run: npm install
 
-      - name: Gerar build do Catálogo React
-        working-directory: sprint-03/React
+      - name: Gerar build das áreas React (Catálogo e Estúdios)
+        working-directory: sprint-04/React
         run: npm run build
 
       - name: Montar o site completo
         run: |
-          mkdir -p _site/catalogo
-          cp -r sprint-03/index.html sprint-03/Assets sprint-03/CSS sprint-03/HTML sprint-03/JS _site/
-          cp -r sprint-03/React/dist/. _site/catalogo/
+          mkdir -p _site
+          cp -r sprint-04/index.html sprint-04/Assets sprint-04/CSS sprint-04/HTML sprint-04/JS _site/
+          # o build já vem com as pastas catalogo/, estudios/ e react-assets/
+          cp -r sprint-04/React/dist/. _site/
 
       - uses: actions/configure-pages@v5
 

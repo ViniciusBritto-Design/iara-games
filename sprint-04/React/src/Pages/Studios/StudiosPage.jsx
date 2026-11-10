@@ -51,8 +51,8 @@ export default function StudiosPage() {
             <span className="section-label">Estúdios brasileiros</span>
             <h1>A cena indie do Brasil, estado por estado</h1>
             <p>
-              Conheça quem cria os jogos da Iara Games e coloque o seu estúdio no mapa. O endereço é
-              preenchido automaticamente a partir do CEP, direto da base dos Correios.
+              Conheça quem cria os jogos da Iara Games e coloque o seu estúdio no mapa da cena
+              independente brasileira.
             </p>
             <div className="hero-actions">
               <Link to="/cadastrar" className="btn btn-primary">

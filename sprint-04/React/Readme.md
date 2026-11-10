@@ -22,8 +22,8 @@ A [ViaCEP](https://viacep.com.br) é um serviço público e gratuito que devolve
 ### Como funciona
 
 1. A pessoa digita o CEP. O campo aplica a máscara `00000-000` e, assim que o 8º número entra, o React chama a ViaCEP (também há o botão "Buscar").
-2. Enquanto a resposta não chega, um indicador de carregamento aparece e a mensagem "Consultando a ViaCEP…" é anunciada para leitores de tela.
-3. Com a resposta, rua, bairro, cidade e UF são preenchidos e travados (são dados oficiais). A interface mostra a região e o DDD que vieram da API, e o cursor pula para o campo "Número".
+2. Enquanto a resposta não chega, um indicador de carregamento aparece e a mensagem "Buscando endereço…" é anunciada para leitores de tela.
+3. Com a resposta, rua, bairro, cidade e UF são preenchidos e travados (são dados oficiais), e o cursor pula para o campo "Número". Região e DDD também chegam da API e ficam guardados no cadastro.
 4. Ao cadastrar, o estúdio é salvo no navegador (localStorage) e aparece na hora no **mapa da cena**: um mapa do Brasil em ladrilhos onde cada estado muda de cor conforme a quantidade de estúdios.
 
 ### Tratamento das respostas
@@ -31,12 +31,16 @@ A [ViaCEP](https://viacep.com.br) é um serviço público e gratuito que devolve
 | Situação | Resposta da ViaCEP | O que a interface faz |
 | --- | --- | --- |
 | CEP encontrado | `200` com o endereço | Preenche e trava os campos |
-| CEP inexistente | `200` com `{ "erro": "true" }` | "CEP não encontrado" + sugestão de busca por endereço |
+| CEP inexistente | `200` com `{ "erro": "true" }` | "Não encontramos esse CEP" + sugestão de busca por endereço |
 | Formato inválido | `400` | Mensagem de formato inválido |
 | CEP geral da cidade | `200` sem rua e bairro | Preenche cidade/UF e libera rua e bairro para digitar |
 | Sem internet / API fora do ar | falha de rede ou mais de 8 s | Explica o problema e oferece "Preencher endereço manualmente" |
 
 Outros cuidados: se a pessoa digitar outro CEP antes da resposta anterior chegar, a consulta antiga é cancelada com `AbortController` (nunca sobrescreve a nova), e CEPs já consultados ficam em cache na memória, sem nova requisição.
+
+### Linguagem da interface
+
+Na tela, os textos falam com quem usa a plataforma: nada de "API", "ViaCEP" ou detalhes técnicos. A pessoa só vê que digitou o CEP e o endereço apareceu. Toda a explicação técnica fica neste README e no PDF de entrega.
 
 ## Estrutura de pastas
 

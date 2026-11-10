@@ -5,10 +5,10 @@ import { useDocumentTitle } from "../../Hooks/useDocumentTitle";
 import StudioForm from "../../Components/Studios/StudioForm";
 import StudioCard from "../../Components/Studios/StudioCard";
 
-const STEPS = [
-  { title: "Digite o CEP", text: "Assim que o 8º número entra, a Iara Games consulta a API ViaCEP." },
-  { title: "Confira o endereço", text: "Rua, bairro, cidade e estado chegam prontos, direto da base dos Correios." },
-  { title: "Apareça no mapa", text: "Seu estúdio entra no mapa da cena indie, no estado certo." },
+const BENEFITS = [
+  { title: "Seja encontrado", text: "Jogadores e outros devs descobrem seu estúdio pelo mapa da cena." },
+  { title: "Mostre de onde você cria", text: "Seu estúdio aparece no seu estado, ao lado de quem faz jogos perto de você." },
+  { title: "Divulgue seu trabalho", text: "Inclua o site ou portfólio para quem quiser conhecer mais." },
 ];
 
 export default function RegisterStudioPage() {
@@ -36,8 +36,8 @@ export default function RegisterStudioPage() {
             <span className="section-label">Cadastro de estúdio</span>
             <h1>Coloque seu estúdio no mapa da cena indie</h1>
             <p>
-              Você só precisa do CEP: o endereço completo vem da API ViaCEP. Os dados ficam salvos neste
-              navegador e o estúdio aparece na hora no mapa.
+              Conte um pouco sobre o seu estúdio e mostre para a comunidade de onde vêm os seus jogos.
+              Leva menos de um minuto.
             </p>
           </div>
         </div>
@@ -74,9 +74,9 @@ export default function RegisterStudioPage() {
           </div>
 
           <aside className="register-aside">
-            <h2>Como funciona</h2>
+            <h2>Por que cadastrar</h2>
             <ol className="register-steps">
-              {STEPS.map((step, index) => (
+              {BENEFITS.map((step, index) => (
                 <li key={step.title}>
                   <span className="step-number">{index + 1}</span>
                   <div>
@@ -86,10 +86,6 @@ export default function RegisterStudioPage() {
                 </li>
               ))}
             </ol>
-            <p className="register-api-note">
-              Dados de endereço fornecidos pela <a href="https://viacep.com.br" target="_blank" rel="noreferrer">ViaCEP</a>,
-              serviço gratuito de consulta de CEP.
-            </p>
           </aside>
         </div>
       </section>

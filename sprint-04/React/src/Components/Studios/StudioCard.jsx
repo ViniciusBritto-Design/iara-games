@@ -53,18 +53,6 @@ export default function StudioCard({ studio, highlighted = false, onRemove }) {
               <dd>{teamSize}</dd>
             </div>
           )}
-          {studio.mine && (
-            <div>
-              <dt>CEP</dt>
-              <dd>{studio.cep}</dd>
-            </div>
-          )}
-          {studio.mine && studio.ddd && (
-            <div>
-              <dt>DDD</dt>
-              <dd>{studio.ddd}</dd>
-            </div>
-          )}
         </dl>
 
         <div className="studio-actions">

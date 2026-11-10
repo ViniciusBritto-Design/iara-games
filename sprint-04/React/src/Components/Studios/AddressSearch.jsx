@@ -61,7 +61,7 @@ export default function AddressSearch({ onSelect }) {
       {open && (
         <div className="address-search-panel" id="buscaPorEndereco">
           <p className="address-search-hint">
-            Informe o estado, a cidade e parte do nome da rua. A ViaCEP devolve até 50 CEPs.
+            Informe o estado, a cidade e parte do nome da rua.
           </p>
           <div className="address-search-fields">
             <div className="form-group">

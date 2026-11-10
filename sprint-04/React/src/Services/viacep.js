@@ -66,7 +66,7 @@ async function requestJson(url, signal) {
   try {
     const response = await fetch(url, { signal: controller.signal });
     if (response.status === 400) {
-      throw new ViaCepError("invalid", "A ViaCEP recusou o formato da consulta.");
+      throw new ViaCepError("invalid", "Esse CEP não é válido. Confira os números.");
     }
     if (!response.ok) {
       throw new ViaCepError("server", `A ViaCEP respondeu com erro ${response.status}.`);
@@ -110,7 +110,7 @@ export async function searchCepsByAddress({ uf, city, street }, { signal } = {})
   const cityName = city.trim();
   const streetName = street.trim();
   if (!uf || cityName.length < 3 || streetName.length < 3) {
-    throw new ViaCepError("invalid", "Informe o estado, a cidade e a rua (mínimo de 3 letras).");
+    throw new ViaCepError("invalid", "Escolha o estado e digite pelo menos 3 letras da cidade e da rua.");
   }
 
   const path = [uf, cityName, streetName].map(encodeURIComponent).join("/");
@@ -125,14 +125,14 @@ export async function searchCepsByAddress({ uf, city, street }, { signal } = {})
 export function getErrorMessage(error) {
   switch (error?.code) {
     case "not_found":
-      return "CEP não encontrado. Confira os números ou use a busca por endereço.";
+      return "Não encontramos esse CEP. Confira os números ou busque pelo endereço.";
     case "invalid":
       return error.message;
     case "timeout":
-      return "A consulta demorou demais. Tente novamente ou preencha o endereço manualmente.";
+      return "A busca demorou mais que o esperado. Tente de novo ou, se preferir, preencha o endereço você mesmo.";
     case "network":
-      return "Sem conexão com a ViaCEP no momento. Você pode preencher o endereço manualmente.";
+      return "Não conseguimos buscar o endereço agora. Se preferir, preencha você mesmo.";
     default:
-      return "A ViaCEP está instável agora. Tente de novo em instantes.";
+      return "Não conseguimos buscar o endereço agora. Tente de novo em instantes.";
   }
 }

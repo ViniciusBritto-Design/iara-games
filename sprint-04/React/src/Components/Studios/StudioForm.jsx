@@ -236,22 +236,18 @@ export default function StudioForm({ onSubmit }) {
         </div>
 
         <div className={`cep-status ${cep.status === "error" ? "is-error" : ""} ${cep.status === "success" ? "is-success" : ""}`} id="cep-status" aria-live="polite">
-          {cep.status === "idle" && !addressSource && "Digite o CEP: o endereço é preenchido automaticamente pela ViaCEP."}
-          {cep.status === "loading" && "Consultando a ViaCEP…"}
+          {cep.status === "idle" && !addressSource && "Digite o CEP e a gente completa o endereço para você."}
+          {cep.status === "loading" && "Buscando endereço…"}
           {cep.status === "success" && cep.address && (
             <>
-              Endereço encontrado: {cep.address.city}/{cep.address.uf} · Região {cep.address.region}
-              {cep.address.ddd && ` · DDD ${cep.address.ddd}`}
-              {cep.address.complement && (
-                <span className="cep-range">Faixa deste CEP: {cep.address.complement}</span>
-              )}
-              {!cep.address.street && (
-                <span className="cep-range">CEP geral da cidade: informe a rua e o bairro.</span>
-              )}
+              Endereço encontrado em {cep.address.city}/{cep.address.uf}.
+              <span className="cep-range">
+                {cep.address.street ? "Agora é só informar o número." : "Complete com a rua e o bairro."}
+              </span>
             </>
           )}
           {cep.status === "error" && cep.error}
-          {addressSource === "manual" && "Preenchimento manual ativado."}
+          {addressSource === "manual" && "Preencha o endereço abaixo."}
         </div>
 
         <div className="cep-helpers">

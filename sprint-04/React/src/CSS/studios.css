@@ -607,10 +607,11 @@
   display: grid;
   grid-template-columns: 96px 1fr 1fr auto;
   gap: 12px;
-  align-items: end;
+  align-items: start;
 }
 
 .address-search-btn {
+  align-self: end;
   padding: 14px 18px;
 }
 

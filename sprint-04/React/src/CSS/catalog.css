@@ -42,23 +42,53 @@ main:focus {
 
 /* HEADER — contador da minha lista */
 
-.nav-favorites {
-  display: inline-flex;
+/* "Minha lista" no menu: ícone de coração sempre visível, com contador */
+.nav {
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-md);
+}
+
+.nav-favorites {
+  position: relative;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-soft);
+  transition: var(--transition);
+}
+
+.nav-favorites:hover,
+.nav-favorites.active {
+  color: #ff7b8a;
+  border-color: rgba(255, 123, 138, 0.45);
+  background: rgba(255, 123, 138, 0.08);
+}
+
+.nav-favorites.active .heart-icon path {
+  fill: currentColor;
 }
 
 .nav-badge {
-  min-width: 22px;
-  height: 22px;
-  padding: 0 6px;
+  position: absolute;
+  top: -5px;
+  right: -6px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
   border-radius: 999px;
-  display: inline-grid;
+  display: grid;
   place-items: center;
-  font-size: 0.78rem;
-  font-weight: 700;
-  background: rgba(111, 211, 155, 0.16);
-  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+  background: #ff7b8a;
+  color: #2a0b10;
 }
 
 .footer-bottom {

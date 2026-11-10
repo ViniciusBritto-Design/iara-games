@@ -1,6 +1,6 @@
 import { useLibrary } from "../../Context/LibraryContext";
 
-function HeartIcon({ filled }) {
+export function HeartIcon({ filled = false }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className="heart-icon">
       <path

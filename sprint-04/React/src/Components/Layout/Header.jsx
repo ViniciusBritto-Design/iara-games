@@ -4,6 +4,7 @@ import { useLocation } from "../../Router/router";
 import { useLibrary } from "../../Context/LibraryContext";
 import logo from "../../Assets/Logo_IG.svg";
 import { PLATFORM_PAGES } from "../../Data/site";
+import { HeartIcon } from "../Game/FavoriteButton";
 
 export default function Header({ area }) {
   const inCatalog = area === "catalogo";
@@ -58,20 +59,28 @@ export default function Header({ area }) {
             <li>
               <a href={PLATFORM_PAGES.publish}>Publicar meu jogo</a>
             </li>
-            <li>
-              <NavItem
-                internal={inCatalog}
-                to="/favoritos"
-                href={PLATFORM_PAGES.favorites}
-                className="nav-favorites"
-              >
-                Minha lista
-                <span className="nav-badge" aria-label={`${favorites.length} jogos salvos`}>
-                  {favorites.length}
-                </span>
-              </NavItem>
-            </li>
           </ul>
+
+          {/* "Minha lista" fica sempre visível no menu, inclusive no celular. */}
+          <NavItem
+            internal={inCatalog}
+            to="/favoritos"
+            href={PLATFORM_PAGES.favorites}
+            className="nav-favorites"
+            aria-label={
+              favorites.length
+                ? `Minha lista: ${favorites.length} ${favorites.length === 1 ? "jogo salvo" : "jogos salvos"}`
+                : "Minha lista"
+            }
+            title="Minha lista"
+          >
+            <HeartIcon />
+            {favorites.length > 0 && (
+              <span className="nav-badge" aria-hidden="true">
+                {favorites.length}
+              </span>
+            )}
+          </NavItem>
         </nav>
       </div>
     </header>

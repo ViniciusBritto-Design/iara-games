@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavToggle();
-  initGameModal();
+  initFavorites();
   initCatalogFilter();
   initFormValidation();
 });
@@ -43,79 +43,82 @@ function initNavToggle() {
 }
 
 /* =====================================================================
-   2) MODAL "VER MAIS / VER DETALHES"
-   Problema resolvido: antes, para saber mais sobre um jogo o usuário
-   precisava sair da página (ou nem havia essa opção no catálogo).
-   Agora um clique no botão abre uma janela modal com mais detalhes,
-   sem tirar o usuário do contexto em que ele estava navegando.
+   2) FAVORITOS ("MINHA LISTA")
+   Problema resolvido: só era possível salvar jogos dentro do Catálogo.
+   Agora o coração aparece também nos jogos em destaque do Início, e o
+   ícone de "Minha lista" no menu mostra quantos jogos estão salvos.
+   A lista é a mesma do Catálogo e dos Estúdios (mesma chave no
+   localStorage), então um jogo salvo aqui já aparece salvo lá.
 ===================================================================== */
-function initGameModal() {
-  const overlay = document.getElementById('gameModal');
-  if (!overlay) return;
+const FAVORITES_KEY = 'iara:favoritos';
 
-  const closeBtn = overlay.querySelector('.modal-close');
-  const modalThumb = overlay.querySelector('.modal-thumb');
-  const modalPill = overlay.querySelector('.modal-pill');
-  const modalTitle = overlay.querySelector('.modal-title');
-  const modalDesc = overlay.querySelector('.modal-desc');
-  const triggers = document.querySelectorAll('[data-modal-trigger]');
+function readFavorites() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]');
+    return Array.isArray(stored) ? stored : [];
+  } catch (error) {
+    return [];
+  }
+}
 
-  let lastFocusedElement = null;
+function saveFavorites(list) {
+  try {
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(list));
+  } catch (error) {
+    // Navegação privada pode bloquear o armazenamento; a página segue funcionando.
+  }
+}
 
-  triggers.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const card = btn.closest('[data-category]');
-      if (!card) return;
+function initFavorites() {
+  const buttons = document.querySelectorAll('[data-favorite]');
+  const counters = document.querySelectorAll('[data-favorites-count]');
 
-      // Lê as informações do próprio card clicado (data-attributes)
-      // e usa esses dados para preencher o conteúdo da modal.
-      // Se o card tiver imagem de capa, a modal reaproveita a mesma imagem;
-      // caso contrário, volta para o fundo colorido definido em data-thumb.
-      const cardImage = card.querySelector('.game-thumb img, .catalog-thumb img');
-      modalThumb.innerHTML = '';
+  function render() {
+    const favorites = readFavorites();
 
-      if (cardImage) {
-        const modalImage = document.createElement('img');
-        modalImage.src = cardImage.getAttribute('src');
-        modalImage.alt = cardImage.getAttribute('alt') || '';
-        modalThumb.className = 'modal-thumb';
-        modalThumb.appendChild(modalImage);
-      } else {
-        modalThumb.className = 'modal-thumb ' + (card.dataset.thumb || '');
+    buttons.forEach((button) => {
+      const saved = favorites.includes(button.dataset.favorite);
+      const title = button.closest('.game-card')?.querySelector('h3')?.textContent || 'jogo';
+      button.classList.toggle('is-saved', saved);
+      button.setAttribute('aria-pressed', String(saved));
+      button.setAttribute(
+        'aria-label',
+        saved ? `Remover ${title} da minha lista` : `Salvar ${title} na minha lista`
+      );
+      button.title = saved ? 'Remover da minha lista' : 'Salvar na minha lista';
+      const path = button.querySelector('path');
+      if (path) path.setAttribute('fill', saved ? 'currentColor' : 'none');
+    });
+
+    counters.forEach((badge) => {
+      badge.textContent = favorites.length;
+      badge.hidden = favorites.length === 0;
+      const link = badge.closest('.nav-favorites');
+      if (link) {
+        const label = favorites.length === 1 ? '1 jogo salvo' : `${favorites.length} jogos salvos`;
+        link.setAttribute('aria-label', favorites.length ? `Minha lista: ${label}` : 'Minha lista');
       }
+    });
+  }
 
-      modalPill.textContent = card.dataset.pill || '';
-      modalTitle.textContent = card.dataset.title || '';
-      modalDesc.textContent = card.dataset.desc || '';
-
-      lastFocusedElement = btn;
-      overlay.classList.add('modal-open');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const slug = button.dataset.favorite;
+      const favorites = readFavorites();
+      const next = favorites.includes(slug)
+        ? favorites.filter((item) => item !== slug)
+        : [...favorites, slug];
+      saveFavorites(next);
+      render();
     });
   });
 
-  function closeModal() {
-    overlay.classList.remove('modal-open');
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (lastFocusedElement) lastFocusedElement.focus();
-  }
-
-  closeBtn.addEventListener('click', closeModal);
-
-  // Fecha ao clicar fora da caixa (na área escurecida)
-  overlay.addEventListener('click', (event) => {
-    if (event.target === overlay) closeModal();
+  // Atualiza se a lista mudar em outra aba (ex.: Catálogo aberto ao lado).
+  window.addEventListener('storage', (event) => {
+    if (event.key === FAVORITES_KEY) render();
   });
 
-  // Fecha com a tecla Esc, para quem navega pelo teclado
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && overlay.classList.contains('modal-open')) {
-      closeModal();
-    }
-  });
+  render();
 }
 
 /* =====================================================================

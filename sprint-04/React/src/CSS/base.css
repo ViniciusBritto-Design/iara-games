@@ -632,12 +632,18 @@ section {
 
   .nav-toggle {
     display: flex;
+    order: 2;
+  }
+
+  .nav-favorites {
+    order: 1;
   }
 
   .nav {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    gap: var(--space-sm);
   }
 
   .nav-list {

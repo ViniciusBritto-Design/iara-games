@@ -49,7 +49,7 @@ A Sprint 04 repete a Sprint 03 (páginas HTML de Início e Publicar + Catálogo 
 ```
 sprint-04/
 ├── index.html                  # entrada do site: leva para HTML/index.html
-├── Assets/  CSS/  HTML/  JS/   # páginas da Sprint 02 (agora com o link "Estúdios" no menu)
+├── Assets/  CSS/  HTML/  JS/   # Início e Publicar (Sprint 02), com os ajustes da Sprint 04 abaixo
 └── React/                      # projeto Vite com as duas áreas React
     ├── catalogo/index.html     # página de entrada do Catálogo
     ├── estudios/index.html     # página de entrada de Estúdios
@@ -74,6 +74,13 @@ sprint-04/
 ```
 
 As duas áreas compartilham cabeçalho, rodapé, estilos e a "Minha lista" (o contador do menu funciona nas duas, porque usam o mesmo localStorage).
+
+### Ajustes nas páginas HTML (Início e Publicar)
+
+- Favicon em todas as páginas.
+- "Minha lista" virou um ícone de coração com contador, sempre visível no menu (também no celular), igual nas áreas React.
+- Jogos em destaque do Início: botão de favoritar sobre a capa e "Ver detalhes", que abre a página do jogo no Catálogo (o popup antigo saiu). Os favoritos usam a mesma lista do Catálogo (`iara:favoritos`).
+- Nova faixa "Para estúdios" no Início, no mesmo padrão de "Publique seu jogo", levando ao cadastro de estúdio.
 
 ## Conceitos de React aplicados na Fase 07
 
